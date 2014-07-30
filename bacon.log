@@ -1,0 +1,15 @@
+2014-07-30 15:45:44,338 - bacon - INFO - Writing log file at C:\Users\Lauren\mystuff\poetic\p_writer\bacon.log
+2014-07-30 15:45:44,552 - bacon - INFO - Bacon 0.3.1
+2014-07-30 15:46:35,872 - bacon - INFO - Writing log file at C:\Users\Lauren\mystuff\poetic\p_writer\bacon.log
+2014-07-30 15:46:35,954 - bacon - INFO - Bacon 0.3.1
+2014-07-30 15:47:22,808 - bacon - INFO - Writing log file at C:\Users\Lauren\mystuff\poetic\p_writer\bacon.log
+2014-07-30 15:47:22,890 - bacon - INFO - Bacon 0.3.1
+2014-07-30 15:47:23,003 - bacon - INFO - Windows 6.1.7601 Service Pack 1
+2014-07-30 15:47:23,003 - bacon - INFO - Architecture: x64
+2014-07-30 15:47:23,003 - bacon - INFO - Number of processors: 2
+2014-07-30 15:47:23,227 - bacon - INFO - GL_VENDOR: Google Inc.
+2014-07-30 15:47:23,227 - bacon - INFO - GL_RENDERER: ANGLE (Mobile Intel(R) 4 Series Express Chipset Family Direct3D11 vs_4_0 ps_4_0)
+2014-07-30 15:47:23,229 - bacon - INFO - GL_SHADING_LANGUAGE_VERSION: OpenGL ES GLSL ES 1.00 (ANGLE 1.2.0.2431)
+2014-07-30 15:47:23,229 - bacon - INFO - GL_EXTENSIONS: GL_OES_element_index_uint GL_OES_packed_depth_stencil GL_OES_get_program_binary GL_OES_rgb8_rgba8 GL_OES_standard_derivatives GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_float GL_OES_texture_npot GL_EXT_occlusion_query_boolean GL_EXT_read_format_bgra GL_EXT_robustness GL_EXT_texture_compression_dxt1 GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_draw_buffers GL_EXT_texture_storage GL_EXT_frag_depth GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_instanced_arrays GL_ANGLE_pack_reverse_row_order GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_NV_fence
+2014-07-30 15:47:23,246 - bacon - INFO - Window size changed to 640x540
+2014-07-30 15:47:47,239 - bacon - INFO - Window size changed to 640x540
