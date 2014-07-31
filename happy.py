@@ -42,7 +42,7 @@ class Markov(object):
 	self.cache[key] = [w3]
 
   def generate_markov_text(self, size):
-	seed = random.randint(0, self.word_size-3)
+	seed = 1 #random.randint(0, self.word_size-3)
 	seed_word, next_word = self.words[seed], self.words[seed+1]
 	w1, w2 = seed_word, next_word
 	gen_words = []
@@ -54,7 +54,7 @@ class Markov(object):
 	
 Tweet = Markov(file)
 listemp = []
-novel = open('poetry2.txt', 'a')
+novel = open('poetry3.txt', 'a')
 options = [0, 2, 4, 6, 8]
 odd_options = [-1, 1, 2, 3, 5, 7]
 
@@ -131,10 +131,10 @@ vbtag))
 
   return chunk  
 
-for x in range(100):
-	line1 = Tweet.generate_markov_text(3)
-	line2 =  Tweet.generate_markov_text(5)
-	line3 = Tweet.generate_markov_text(3)
+for x in range(10):
+	line1 = Tweet.generate_markov_text(8)
+	line2 =  Tweet.generate_markov_text(8)
+	line3 = Tweet.generate_markov_text(6)
 	#double_remover(line1)
 	#double_remover(line2)
 	#double_remover(line3)
