@@ -17,9 +17,12 @@ class Poem(models.Model):
 
     def return_poem(self):
         byline = "%s by %s\n" % (self.title, self.author)
-        
+        current_poem = Line.poem_line_list(self)
+        poetry = ""
+        for line in current_poem:
+            poetry += line + "\n"
 
-        return byline + poetry
+        return byline + "\n" + poetry
 
 
 
@@ -35,6 +38,8 @@ class Line(models.Model):
         line = {self.line_number : self.poem_line}
         return line
 
-    def return_poem(self, value):
-        if value == self.poem_part:
+    def poem_line_list(self, poem_id):
+        poem_list = self.objects.get(poem_part=poem_id, order_by='line_number')
+        return poem_list
+
 
