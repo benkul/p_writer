@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from generator import views
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -9,6 +9,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^generator/', include('generator.urls')),
+    url(r'^poetic/', include('poetic.urls')),
 
 )

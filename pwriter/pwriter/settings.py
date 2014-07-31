@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROEJCT_PATH = os.path.abspath(PROJECT_PATH)
-DATABASE_PATH = os.path.join(PROJECT_PATH, 'generator.db')
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'poetic.db')
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'generator',
+    'poetic',
 )
 
 MIDDLEWARE_CLASSES = (
