@@ -17,7 +17,7 @@ class Poem(models.Model):
 
     def return_poem(self):
         byline = "%s by %s\n" % (self.title, self.author)
-
+        
 
         return byline + poetry
 
