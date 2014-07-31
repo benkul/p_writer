@@ -63,23 +63,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/poetic/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="20" column="0" selection-start="614" selection-end="614" vertical-scroll-proportion="0.5555556" vertical-offset="0" max-vertical-offset="782">
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1406822721791" expanded="true" signature="112:480" placeholder="..." />
-                <marker date="1406822721791" expanded="true" signature="369:480" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="admin.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="116" selection-end="116" vertical-scroll-proportion="0.11111111" vertical-offset="0" max-vertical-offset="612">
+            <state line="4" column="25" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -133,10 +131,10 @@
         <option value="$PROJECT_DIR$/poetic/views.py" />
         <option value="$PROJECT_DIR$/pwriter/templates/poetic/base.html" />
         <option value="$PROJECT_DIR$/pwriter/templates/poetic/index.html" />
-        <option value="$PROJECT_DIR$/poetic/models.py" />
         <option value="$PROJECT_DIR$/pwriter/settings.py" />
         <option value="$PROJECT_DIR$/poetic/templates/poetic/base.html" />
         <option value="$PROJECT_DIR$/poetic/admin.py" />
+        <option value="$PROJECT_DIR$/poetic/models.py" />
       </list>
     </option>
   </component>
@@ -467,17 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetic/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1406822721791" expanded="true" signature="112:480" placeholder="..." />
-            <marker date="1406822721791" expanded="true" signature="369:480" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poetic/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="24" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
@@ -519,9 +506,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/poetic/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="116" selection-end="116" vertical-scroll-proportion="0.11111111" vertical-offset="0" max-vertical-offset="612">
+        <state line="4" column="25" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetic/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="614" selection-end="614" vertical-scroll-proportion="0.5555556" vertical-offset="0" max-vertical-offset="782">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
