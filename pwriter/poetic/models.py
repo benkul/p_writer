@@ -9,7 +9,8 @@ import nltk
 class Poem(models.Model):
     title = models.CharField(max_length=120)
     num_lines = models.IntegerField(default=randrange(3, 7))
-    num_words_per_line = models.IntegerField(default=randrange(4, 8))
+    min_words = models.IntegerField(default=3)
+    max_words = models.IntegerField(default=randrange(5, 8))
     author = models.CharField(max_length=120)
 
     def __unicode__(self):
