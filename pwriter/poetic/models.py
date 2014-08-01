@@ -1,8 +1,7 @@
 from django.db import models
 from random import randrange
-from poetic_bits import Markov, Poem_Attributes
-from textblob import Textblob
-import nltk
+
+
 
 
 # Create your models here.
@@ -30,7 +29,7 @@ class Line(models.Model):
     poem_part = models.ForeignKey(Poem)
     poem_line = models.CharField(max_length=200)
     line_number = models.IntegerField()
-    title = models.CharField(default=Poem.title)
+
 
     def __unicode__(self):
         return self.poem_line

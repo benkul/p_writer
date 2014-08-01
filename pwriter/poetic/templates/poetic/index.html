@@ -5,6 +5,25 @@
 
 {% block body_block %}
                     <div>
+                        <div class="form-group pull-right">
+
+                        <form id="form-control" method="post" action="/poetic/">
+                            {% csrf_token %}
+                            <div>
+                                {{ form.title.errors }}
+                                {{ form.title.help_text }}
+                                {{ form.title }}
+                            </div>
+                            <div>by
+                                {{ form.author.errors }}
+                                {{ form.author.help_text }}
+                                {{ form.author }}
+                            </div>
+
+
+                        <input type="submit" name="submit" value="Create Poem" />
+                        </form>
+                            </div>
 
                     </div>
 {% endblock %}

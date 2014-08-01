@@ -1,5 +1,5 @@
 import random
-import nltk
+
 from poetic.models import Poem, Line
 
 
