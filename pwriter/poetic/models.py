@@ -5,20 +5,28 @@ from random import randrange
 
 
 # Create your models here.
+class SourceText(models.Model):
+    text = models.TextField()
+    name = models.CharField(max_length=120)
+    description = models.CharField(max_length=400) # short description of types of imagary in class
+
+    def __unicode__(self):
+        return self.name
+
+    def get_description(self):
+        return "%s: %s" % (self.name, self.description)
+
+
 class Poem(models.Model):
     title = models.CharField(max_length=120)
+    author = models.CharField(max_length=120)
     num_lines = models.IntegerField(default=randrange(3, 7))
     min_words = models.IntegerField(default=3)
     max_words = models.IntegerField(default=randrange(5, 8))
-    author = models.CharField(max_length=120)
+    poem_source = models.ForeignKey(SourceText)
 
     def __unicode__(self):
         return self.title
-
-    def poem_stats(self):
-        return "number of lines: %r  number of words per line: %r" % (self.num_lines, self.num_words_per_line)
-
-
 
 
 
