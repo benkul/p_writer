@@ -20,7 +20,7 @@ class Poem(models.Model):
 
     def return_poem(self):
         byline = "%s by %s\n" % (self.title, self.author)
-        current_poem = []
+        current_poem =
         poetry = ""
         for line in current_poem:
             poetry += line + "\n"
