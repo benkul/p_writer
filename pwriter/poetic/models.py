@@ -18,14 +18,7 @@ class Poem(models.Model):
     def poem_stats(self):
         return "number of lines: %r  number of words per line: %r" % (self.num_lines, self.num_words_per_line)
 
-    def return_poem(self):
-        byline = "%s by %s\n" % (self.title, self.author)
-        current_poem =
-        poetry = ""
-        for line in current_poem:
-            poetry += line + "\n"
 
-        return byline + "\n" + poetry
 
 
 
@@ -45,8 +38,6 @@ class Line(models.Model):
         line = {self.line_number : self.poem_line}
         return line
 
-    def poem_line_list(self, inpug):
-        poem_list = self.objects.get(inpug=self.poem_part, order_by='line_number')
-        return poem_list
+
 
 
