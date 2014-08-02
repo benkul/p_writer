@@ -1,6 +1,7 @@
 from django.db import models
 from random import randrange
 from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.contrib.auth.models import User
 
 
 
@@ -20,9 +21,21 @@ class SourceText(models.Model):
         return str(self.location) # returns name with static root added
 
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    website = models.URLField(blank = True)
+    picture = models.ImageField(upload_to='profile_images', blank = True)
+
+    def __unicode__(self):
+        return self.user.username
+
+    def get_name(self):
+        return "%s" % self.user.username
+
 class Poem(models.Model):
     title = models.CharField(max_length=120)
-    author = models.CharField(max_length=120)
+    author = models.ForeignKey(UserProfile)
     num_lines = models.IntegerField(default=randrange(3, 7))
     min_words = models.IntegerField(default=3)
     max_words = models.IntegerField(default=randrange(5, 8))
@@ -36,11 +49,20 @@ class Poem(models.Model):
 
 
 
+
+class LineManager(models.Manager):
+    def create_line(self, poem_part, poem_line, line_number):
+        line = self.create(poem_part=poem_part, poem_line=poem_line, line_number=line_number)
+        return line
+
+
+
 class Line(models.Model):
     poem_part = models.ForeignKey(Poem)
     poem_line = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
+    objects = LineManager()
 
     def __unicode__(self):
         return self.poem_line
@@ -48,7 +70,6 @@ class Line(models.Model):
     def line_num_line(self):
         line = {self.line_number : self.poem_line}
         return line
-
 
 
 
