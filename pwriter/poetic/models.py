@@ -6,7 +6,7 @@ from random import randrange
 
 # Create your models here.
 class SourceText(models.Model):
-    text = models.TextField()
+    location = models.CharField(max_length=120) #points to location of static file
     name = models.CharField(max_length=120)
     description = models.CharField(max_length=400) # short description of types of imagary in class
 
