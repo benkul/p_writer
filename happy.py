@@ -37,9 +37,9 @@ class Markov(object):
     for w1, w2, w3 in self.triples():
       key = (w1, w2)
       if key in self.cache:
-	self.cache[key].append(w3)
+		self.cache[key].append(w3)
       else:
-	self.cache[key] = [w3]
+		self.cache[key] = [w3]
 
   def generate_markov_text(self, size):
 	seed = 1 #random.randint(0, self.word_size-3)

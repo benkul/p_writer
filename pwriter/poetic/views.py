@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 from poetic.models import Poem, Line, SourceText
 from poetic.forms import PoemForm
 from poetic.poetic_bits import Markov
+from django.contrib.staticfiles.templatetags.staticfiles import static
 import nltk
 from textblob import TextBlob
 import random
@@ -15,8 +16,10 @@ import random
 #helper fucntion to generate poems
 def create_poem(title, author, lines, min_word, max_word, source):
     text = SourceText.objects.get(name=source)
-    #text = str(text.location) TODO: build path to static file
-    poem_gen = Markov(text.location)
+    print text.get_location()
+
+    text = open(text.get_location(), 'r') #TODO: build path to static file
+    poem_gen = Markov(text)
     n=1
     poem_dict = {}
     for line in range(lines):

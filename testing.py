@@ -1,6 +1,7 @@
 import random
 import nltk
-from poetic.models import Poem, Line
+
+
 
 
 class Markov(object):
@@ -35,10 +36,10 @@ class Markov(object):
     def database(self):
         for w1, w2, w3 in self.triples():
             key = (w1, w2)
-            if key in self.cache:
-                self.cache[key].append(w3)
-            else:
-                self.cache[key] = [w3]
+        if key in self.cache:
+            self.cache[key].append(w3)
+        else:
+            self.cache[key] = [w3]
 
     def generate_markov_text(self, size):
         seed = random.randint(0, self.word_size-3)
@@ -50,4 +51,23 @@ class Markov(object):
             w1, w2 = w2, random.choice(self.cache[(w1, w2)])
         gen_words.append(w2)
         return ' '.join(gen_words)
+
+file = open('forestry.txt', 'r')
+poem_gen = Markov(file)
+
+n=1
+poem_dict = {}
+
+for line in range(7):
+	#id = Poem.pk
+	line = poem_gen.generate_markov_text(random.randrange(3, 7))
+	line = line.translate(to='es')
+	line = line.translate(to='en')
+	line = line.translate(to='nl')
+	line = line.translate(to='en')
+	print line
+	#Line.create(poem_part=id, poem_line=line, line_number=n)
+	poem_dict[n] = line
+	n += 1
+	print poem_dict
 

@@ -1,12 +1,12 @@
 from django.db import models
 from random import randrange
-
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 
 # Create your models here.
 class SourceText(models.Model):
-    location = models.CharField(max_length=120) #points to location of static file
+    location = models.CharField(max_length=120) # file name
     name = models.CharField(max_length=120)
     description = models.CharField(max_length=400) # short description of types of imagary in class
 
@@ -15,6 +15,9 @@ class SourceText(models.Model):
 
     def get_description(self):
         return "%s: %s" % (self.name, self.description)
+
+    def get_location(self):
+        return str(self.location) # returns name with static root added
 
 
 class Poem(models.Model):
