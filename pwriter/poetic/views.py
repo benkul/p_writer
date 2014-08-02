@@ -25,10 +25,12 @@ def create_poem(title, author, lines, min_word, max_word, source):
     for line in range(lines):
         id = Poem.pk
         line = poem_gen.generate_markov_text(random.randrange(min_word, max_word))
+        line = TextBlob(line)
         line = line.translate(to='es')
         line = line.translate(to='en')
         line = line.translate(to='nl')
         line = line.translate(to='en')
+        line = str(line)
         print line
         Line.create(poem_part=id, poem_line=line, line_number=n)
         poem_dict[n] = line

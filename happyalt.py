@@ -2,7 +2,7 @@ import nltk
 import random
 from textblob import TextBlob
 
-
+file = open('forestry.txt', 'r')
 
 class Markov(object):
 
@@ -51,4 +51,27 @@ class Markov(object):
 	  w1, w2 = w2, random.choice(self.cache[(w1, w2)])
 	gen_words.append(w2)
 	return ' '.join(gen_words)
+	
+Tweet = Markov(file)
+
+
+
+ 
+
+for x in range(10):
+	line1 = Tweet.generate_markov_text(random.randrange(4,5))
+	blob1 = TextBlob(line1)
+	blob1 = blob1.translate(to='es')
+	blob1 = blob1.translate(to='en')
+	blob1 = blob1.translate(to='nl')
+	blob1 = blob1.translate(to='en')
+
+	
+	blob1 = str(blob1)
+	print blob1
+
+
+
+
+
 

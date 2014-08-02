@@ -133,84 +133,16 @@ vbtag))
 
 for x in range(10):
 	line1 = Tweet.generate_markov_text(8)
-	line2 =  Tweet.generate_markov_text(8)
-	line3 = Tweet.generate_markov_text(6)
-	#double_remover(line1)
-	#double_remover(line2)
-	#double_remover(line3)
-	the = "the"
-	india = "in"
-	so = "so"
-	of = "of"
-	either = "or"
-	plus = "and"
-	replacement = [" light", " dark", " end", " moon", " owl", " wolf"]
-	if line1.find(the, (len(line1) - 3), len(line1)) == (len(line1) - 3):
-		line1 += random.choice(replacement)
-	elif line1.find(india, (len(line1) - 2), len(line1)) == (len(line1) - 2):
-		line1 += (" death")
-	elif line1.find(so, (len(line1) - 5), len(line1)) == (len(line1) - 5):
-		line1 += (" alone")		
-	if line2.find(the, (len(line2) - 3), len(line2)) == (len(line2) - 3):
-		line2 += random.choice(replacement)
-	elif line2.find(india, (len(line2) - 2), len(line2)) == (len(line2) - 2):
-		line2 += (" death")
-	elif line1.find(so, (len(line2) - 5), len(line2)) == (len(line2) - 5):
-		line2 += (" alone")			
-	if line3.find(the, (len(line3) - 3), len(line3)) == (len(line3) - 3):
-		line3 += random.choice(replacement)
-	elif line3.find(india, (len(line3) - 2), len(line3)) == (len(line3) - 2):
-		line3 += (" death")
-	elif line3.find(so, (len(line3) - 5), len(line3)) == (len(line3) - 5):
-		line3 += (" alone")			
-	elif line3.find(of, (len(line3) - 2), len(line3)) == (len(line3) - 2):
-		line3 += (" time")
-	elif line3.find(either, (len(line3) - 2), len(line3)) == (len(line3) - 2):
-		line3 += (" broken")
-	elif line3.find(plus, (len(line3) - 3), len(line3)) == (len(line3) - 3):
-		line3 += (" broken")
-	
 	blob1 = TextBlob(line1)
-	blob2 = TextBlob(line2)
-	blob3 = TextBlob(line3)
-	unedited = line1 + " " + line2 + " " + line3
-	poetry = blob1 + " " + blob2 + " " + blob3
-	print poetry
-	poetry = poetry.translate(to='es')
-	poetry = poetry.translate(to='en')
-	poetry = poetry.translate(to='nl')
-	poetry = poetry.translate(to='en')
-	print poetry
 	blob1 = blob1.translate(to='es')
 	blob1 = blob1.translate(to='en')
 	blob1 = blob1.translate(to='nl')
 	blob1 = blob1.translate(to='en')
-	print blob1
-	blob2 = blob2.translate(to='es')
-	blob2 = blob2.translate(to='en')
-	blob2 = blob2.translate(to='nl')
-	blob2 = blob2.translate(to='en')
-	print blob2
-	blob3 = blob3.translate(to='es')
-	blob3 = blob3.translate(to='en')
-	blob3 = blob3.translate(to='nl')
-	blob3 = blob3.translate(to='en')
-	print blob3
-	blob1 = str(blob1)
-	blob2 = str(blob2)
-	blob3 = str(blob3)
+
 	
-	poetry = str(poetry)
-	novel.write(unedited)
-	novel.write("\n")
-	novel.write(poetry)
-	novel.write("\n")
-	novel.write(blob1)
-	novel.write("\n")
-	novel.write(blob2)
-	novel.write("\n")
-	novel.write(blob3)
-	novel.write("\n")
+	blob1 = str(blob1)
+	print blob1
+
 
 
 file.close()	
