@@ -2,7 +2,7 @@ import nltk
 import random
 from textblob import TextBlob
 
-file = open('forestry.txt', 'r')
+
 
 class Markov(object):
 
@@ -52,7 +52,7 @@ class Markov(object):
 	gen_words.append(w2)
 	return ' '.join(gen_words)
 
-file = open('forestry.txt', 'r')
+file = open('forestry5.txt', 'r')
 poem_gen = Markov(file)
 
 n=1
@@ -71,7 +71,6 @@ for item in range(7):
 	line = str(line)
 	print line
 	#Line.create(poem_part=id, poem_line=line, line_number=n)
-	poem_dict[n] = line
 	n += 1
-	print poem_dict
+	
 
