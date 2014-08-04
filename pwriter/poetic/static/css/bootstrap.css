@@ -8,6 +8,7 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+
 .clearfix {
   *zoom: 1;
 }
@@ -4103,7 +4104,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
-  color: #ffffff;
+  color: #99ffcc;
   background-color: #0088cc;
 }
 
@@ -6165,3 +6166,4 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+

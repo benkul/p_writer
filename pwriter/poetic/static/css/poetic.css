@@ -1,0 +1,15 @@
+h1.poetich1 {
+    color: #99ffcc;
+
+}
+
+div.poetic {
+    text-decoration: none;
+    color: #99ffcc;
+}
+
+div.poetic :hover {
+    text-decoration: none;
+    color: #00CC66;
+    }
+

@@ -7,11 +7,11 @@
 
         {% if registered %}
         Rango says: <strong>thank you for registering!</strong>
-        <a href="/poetic/">Return to the homepage.</a><br />
+        <a href="/poetic/">You're already registered, pardner!</a><br />
         {% else %}
-        Rango says: <strong>register here!</strong><br />
+        <strong>Register for Poetic here!</strong><br />
 
-        <form id="user_form" method="post" action="/login/register/"
+        <form id="user_form" method="post" action="/poetic/register/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}

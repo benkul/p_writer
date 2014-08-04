@@ -9,6 +9,7 @@ class PoemForm(forms.ModelForm):
     max_lines = forms.IntegerField(help_text="Maximum words per line", initial=6)
     poem_source = forms.ModelChoiceField(queryset=SourceText.objects.all())
 
+
     class Meta:
         model = Poem
         fields = ('title',  'num_lines', 'min_lines', 'max_lines', 'poem_source')

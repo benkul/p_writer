@@ -93,10 +93,16 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render_to_response(
-        'poetic/register.html',
+    return render_to_response('poetic/register.html',
         {'user_form' : user_form, 'profile_form' : profile_form, 'registered': registered},
         context)
+
+def user_poems(request, user_name_url):
+    context = RequestContext(request)
+    poem_titles = Poem.objects.filter(author=UserProfile)
+    user_name = user_name_url.replace('_', ' ')
+    context_dict = {'user_poems': poem_titles }
+    return render_to_response('url', context_dict, context)
 
 def user_login(request):
     # Like before, obtain the context for the user's request.
