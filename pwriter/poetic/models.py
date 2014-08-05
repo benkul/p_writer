@@ -41,10 +41,14 @@ class Poem(models.Model):
     min_words = models.IntegerField(default=3)
     max_words = models.IntegerField(default=randrange(5, 8))
     poem_source = models.ForeignKey(SourceText)
-    title_slug = models.CharField(max_length=120)
+    title_slug = models.CharField(max_length=120, unique=True)
 
     def __unicode__(self):
         return self.title
+
+    def poem_getter(self):
+        array = Line.objects.filter(poem_part=self.pk,).order_by('line_number')
+
 
 
 class LineManager(models.Manager):

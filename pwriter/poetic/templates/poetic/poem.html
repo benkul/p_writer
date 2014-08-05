@@ -4,11 +4,13 @@
 
 
 {% block body_block %}
-{{ title }}
-by
-{{ author }}
+
+<h1>{{ poem.title }}</h1>
+<h5>by</h5>
+<h3>{{ poem.author }}</h3>
 
 
+{{ poem.poem_getter }}
 
 
 

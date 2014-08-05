@@ -1,6 +1,6 @@
 
 from django.contrib.auth import logout
-
+from django.shortcuts import get_object_or_404
 from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
@@ -42,6 +42,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         n += 1
     poem_dict['author'] = author
     poem_dict['title'] = title
+    poem_dict['number_of_lines'] = lines
     return poem_dict
 
 
@@ -56,19 +57,19 @@ def index(request):
         if form.is_valid():
             poem = form.save(commit=False)
             poem.title_slug = slugify(poem.title)
-            print request.user
+
             poem.author = UserProfile.objects.get(user=request.user)
-
-            poem = poem.save()
-
-            return get_poem(request,
-                            create_poem(poem.title,
-                                        poem.author,
+            print poem.title
+            poem = form.save()
+            print poem
+            create_poem(poem.title, poem.author,
                                         poem.num_lines,
                                         poem.min_words,
                                         poem.max_words,
                                         poem.poem_source,
-                                        poem.pk))
+                                        poem.pk)
+
+            return get_poem(request, poem.author, poem.title_slug)
         else:
             print form.errors
     else:
@@ -76,9 +77,15 @@ def index(request):
     return render_to_response('poetic/index.html', {'form': form}, context)
 
 
-def get_poem(request, context_dict):
+def get_poem(request, username, title_slug):
     context = RequestContext(request)
-    # code to get and return poem
+    print username
+    print title_slug
+    this_poem = get_object_or_404(Poem, author=username, title_slug=title_slug)
+
+    context_dict = { 'poem' : this_poem }
+
+
     return render_to_response('poetic/poem.html', context_dict, context)
 
 
