@@ -12,7 +12,7 @@ class PoemForm(forms.ModelForm):
 
     class Meta:
         model = Poem
-        fields = ('title',  'num_lines', 'min_lines', 'max_lines', 'poem_source')
+        fields = ('title', 'num_lines', 'min_lines', 'max_lines', 'poem_source')
 
 
 class UserForm(forms.ModelForm):

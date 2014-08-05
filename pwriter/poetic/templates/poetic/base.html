@@ -36,12 +36,12 @@
 <div>
         {% if user.is_authenticated %}
             <ul class="nav nav-pills">
-                <li><a href="/poetic/logout/">      Logout</a></li>
+                <li><a id="poetic1" href="logout/">      Logout</a></li>
             </ul>
         {% else %}
             <ul class="nav nav-pills">
-                <li><a href='/poetic/register/'>    Register</a></li>
-                <li><a href='/poetic/login/'>       Login</a></li>
+                <li><a id="poetic2" href='/poetic/register/'>    Register</a></li>
+                <li><a id="poetic3" href='/poetic/login/'>       Login</a></li>
             </ul>
         {% endif %}
 

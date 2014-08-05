@@ -40,6 +40,8 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         final = Line.objects.create_line(id, line, n)
         poem_dict[n] = line
         n += 1
+    poem_dict['author'] = author
+    poem_dict['title'] = title
     return poem_dict
 
 
@@ -53,10 +55,17 @@ def index(request):
         form = PoemForm(request.POST)
         if form.is_valid():
             poem = form.save(commit=True)
-            author = UserProfile.objects.get()
+            poem.author = request.User
+            poem = form.save(commit=True)
 
-            return get_poem(request, poem.author, poem.title,
-                            create_poem(poem.title, poem.num_lines, poem.min_words, poem.max_words, poem.poem_source, poem.pk))
+            return get_poem(request,
+                            create_poem(poem.title,
+                                        poem.author,
+                                        poem.num_lines,
+                                        poem.min_words,
+                                        poem.max_words,
+                                        poem.poem_source,
+                                        poem.pk))
         else:
             print form.errors
     else:
@@ -64,7 +73,7 @@ def index(request):
     return render_to_response('poetic/index.html', {'form': form}, context)
 
 
-def get_poem(request, user, title, dict):
+def get_poem(request, context_dict):
     context = RequestContext(request)
     url = 'poetic/' + user + "/" + title + "/"
     # code to get and return poem
@@ -100,12 +109,7 @@ def register(request):
         {'user_form' : user_form, 'profile_form' : profile_form, 'registered': registered},
         context)
 
-#def user_poems(request, user_name_url):
- #   context = RequestContext(request)
-  #  #poem_titles = Poem.objects.filter(author=UserProfile)
-    #user_name = user_name_url.replace('_', ' ')
-    #context_dict = {'user_poems': poem_titles }
-   # return render_to_response('url', user_name_url, context)
+
 
 def user_login(request):
     # Like before, obtain the context for the user's request.

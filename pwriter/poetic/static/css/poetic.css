@@ -1,4 +1,6 @@
-
+body.background {
+background-color: #FFFFFF;
+}
 
 div.poetic {
     text-decoration: none;
@@ -6,11 +8,13 @@ div.poetic {
 
 div.poetic :hover {
     text-decoration: none;
-    color: #FFCC99;
+    color: #FF9900;
     }
 
 
-#poetic {
+#poetic, #poetic1, #poetic2, #poetic3  {
     text-decoration: none;
-    color: #FFCC99;
+    color: #FF9900;
 }
+
+

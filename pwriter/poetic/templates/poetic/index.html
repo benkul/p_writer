@@ -11,12 +11,13 @@
               {% endif %}
                     <div class="form-group pull-left">
 
-                        <form id="form-control" method="post" action="/poetic/">
-                    {% csrf_token %}
-                    {{ form.as_p}}
+                            <form id="form-control" method="post" action="/poetic/">
+
+                            {{ form.as_p}}
 
                     {% if user.is_authenticated %}
-                        <input type="submit" name="submit" value="Create Poem" />
+                            {% csrf_token %}
+                            <input type="submit" name="submit" value="Create Poem" />
                     {% else %}
 
 

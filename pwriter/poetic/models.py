@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class SourceText(models.Model):
     location = models.CharField(max_length=120) # file name
     name = models.CharField(max_length=120)
-    description = models.CharField(max_length=400) # short description of types of imagary in class
+    description = models.CharField(max_length=400) # short description of types of imagery in class
 
     def __unicode__(self):
         return self.name
