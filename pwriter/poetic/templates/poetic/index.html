@@ -4,53 +4,19 @@
 
 
 {% block body_block %}
-                    <div>
-                        {% if registered %}
+                <div>
+
                         <div class="form-group pull-left">
-
+<!--
                         <form id="form-control" method="post" action="/poetic/">
-                            {% csrf_token %}
+                           {% csrf_token %} -->
                             {{ form.as_p}}
-                                {% comment %}
-                                {{ form.title.errors }}
-
-                                {{ form.title }}<br>
-                                by<br>
-                                {{ form.author.errors }}
-
-                                {{ form.author }}<br>
-
-                                {{ form.num_lines.errors }}
-                                {{ form.num_lines.help_text }}<br>
-                                {{ form.num_lines }}<br>
-
-                                {{ form.min_lines.errors }}
-                                {{ form.min_lines.help_text }}<br>
-                                {{ form.min_lines }}<br>
-
-                                {{ form.max_lines.errors }}
-                                {{ form.max_lines.help_text }}<br>
-                                {{ form.max_lines }}<br>
-
-                                {{ form.max_lines.errors }}
-                                {{ form.max_lines.help_text }}<br>
-                                {{ form.max_lines }}<br>
-                                {% endcomment %}
 
 
-
-
-
-
-
-
-                        <input type="submit" name="submit" value="Create Poem" />
-                        </form>
+<!--                        <input type="submit" name="submit" value="Create Poem" />
+                        </form> -->
                             </div>
 
                     </div>
-        {% else %}
-                                    Register to compose poems!
-                                    {% endif %}
 
 {% endblock %}

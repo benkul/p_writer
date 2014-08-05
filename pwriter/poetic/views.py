@@ -1,6 +1,8 @@
-#from django.shortcuts import render
 
-# Create your views here.
+from django.contrib.auth import logout
+
+
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -46,6 +48,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
 
 def index(request):
     context = RequestContext(request)
+
     if request.method == 'POST':
         form = PoemForm(request.POST)
         if form.is_valid():
@@ -58,8 +61,8 @@ def index(request):
             print form.errors
     else:
         form = PoemForm()
-
     return render_to_response('poetic/index.html', {'form': form}, context)
+
 
 def get_poem(request, user, title, dict):
     context = RequestContext(request)
@@ -97,12 +100,12 @@ def register(request):
         {'user_form' : user_form, 'profile_form' : profile_form, 'registered': registered},
         context)
 
-def user_poems(request, user_name_url):
-    context = RequestContext(request)
-    poem_titles = Poem.objects.filter(author=UserProfile)
-    user_name = user_name_url.replace('_', ' ')
-    context_dict = {'user_poems': poem_titles }
-    return render_to_response('url', context_dict, context)
+#def user_poems(request, user_name_url):
+ #   context = RequestContext(request)
+  #  #poem_titles = Poem.objects.filter(author=UserProfile)
+    #user_name = user_name_url.replace('_', ' ')
+    #context_dict = {'user_poems': poem_titles }
+   # return render_to_response('url', user_name_url, context)
 
 def user_login(request):
     # Like before, obtain the context for the user's request.
@@ -143,3 +146,14 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render_to_response('poetic/login.html', {}, context)
+
+
+# Use the login_required() decorator to ensure only those logged in can access the view.
+@login_required
+def user_logout(request):
+    context = RequestContext(request)
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+
+    # Take the user back to the homepage.
+    return render_to_response('poetic/logout.html', {}, context)
