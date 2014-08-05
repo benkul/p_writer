@@ -10,3 +10,7 @@ div.poetic :hover {
     }
 
 
+#poetic {
+    text-decoration: none;
+    color: #FFCC99;
+}

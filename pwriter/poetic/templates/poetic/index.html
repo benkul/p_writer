@@ -4,23 +4,28 @@
 
 
 {% block body_block %}
-                <div>
-          {% if user.is_authenticated %}
-           {% else %}
-
-                   <div class="alert alert-danger"> You must be logged in to save poems </div>
-          {% endif %}
-                        <div class="form-group pull-left">
+        <div>
+              {% if user.is_authenticated %}
+              {% else %}
+                   <div class="alert alert-danger"> You must be logged in to compose poems </div>
+              {% endif %}
+                    <div class="form-group pull-left">
 
                         <form id="form-control" method="post" action="/poetic/">
-                           {% csrf_token %}
-                            {{ form.as_p}}
+                    {% csrf_token %}
+                    {{ form.as_p}}
 
-
+                    {% if user.is_authenticated %}
                         <input type="submit" name="submit" value="Create Poem" />
-                        </form>
-                            </div>
+                    {% else %}
 
-                    </div>
+
+                    {% endif %}
+
+
+                        </form>
+              </div>
+
+        </div>
 
 {% endblock %}
