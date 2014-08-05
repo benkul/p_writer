@@ -56,10 +56,10 @@ def index(request):
         if form.is_valid():
             poem = form.save(commit=False)
             poem.title_slug = slugify(poem.title)
+            print request.user
+            poem.author = UserProfile.objects.get(user=request.user)
 
-            poem.author =
-
-            poem = poem.save(commit=True)
+            poem = poem.save()
 
             return get_poem(request,
                             create_poem(poem.title,
