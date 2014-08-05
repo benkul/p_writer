@@ -4,11 +4,12 @@
 
 
 {% block body_block %}
+{{ title }}
+by
+{{ author }}
 
-        {% for poem in poems %}
-            <p>{{ poem.title }}</p>
 
 
-        {% endfor %}
+
 
 {% endblock %}

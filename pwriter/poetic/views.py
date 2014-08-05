@@ -1,7 +1,7 @@
 
 from django.contrib.auth import logout
 
-
+from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
@@ -54,9 +54,12 @@ def index(request):
     if request.method == 'POST':
         form = PoemForm(request.POST)
         if form.is_valid():
-            poem = form.save(commit=True)
-            poem.author = request.User
-            poem = form.save(commit=True)
+            poem = form.save(commit=False)
+            poem.title_slug = slugify(poem.title)
+
+            poem.author =
+
+            poem = poem.save(commit=True)
 
             return get_poem(request,
                             create_poem(poem.title,
@@ -75,9 +78,8 @@ def index(request):
 
 def get_poem(request, context_dict):
     context = RequestContext(request)
-    url = 'poetic/' + user + "/" + title + "/"
     # code to get and return poem
-    return render_to_response(url, dict, context)
+    return render_to_response('poetic/poem.html', context_dict, context)
 
 
 def register(request):
@@ -109,6 +111,11 @@ def register(request):
         {'user_form' : user_form, 'profile_form' : profile_form, 'registered': registered},
         context)
 
+def user_profile(request, username):
+    context = RequestContext(request)
+    poems = Poem.objects.filter(author__user__username=username)
+    context_dict = { "poems" : poems }
+    return render_to_response('poetic/profile.html', context_dict, context)
 
 
 def user_login(request):

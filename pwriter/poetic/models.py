@@ -33,6 +33,7 @@ class UserProfile(models.Model):
     def get_name(self):
         return "%s" % self.user.username
 
+
 class Poem(models.Model):
     title = models.CharField(max_length=120)
     author = models.ForeignKey(UserProfile)
@@ -40,21 +41,16 @@ class Poem(models.Model):
     min_words = models.IntegerField(default=3)
     max_words = models.IntegerField(default=randrange(5, 8))
     poem_source = models.ForeignKey(SourceText)
+    title_slug = models.CharField(max_length=120)
 
     def __unicode__(self):
         return self.title
-
-
-
-
-
 
 
 class LineManager(models.Manager):
     def create_line(self, poem_part, poem_line, line_number):
         line = self.create(poem_part=poem_part, poem_line=poem_line, line_number=line_number)
         return line
-
 
 
 class Line(models.Model):
