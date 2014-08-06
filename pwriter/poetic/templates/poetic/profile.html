@@ -6,8 +6,10 @@
 {% block body_block %}
 
         {% for poem in poems %}
-            <p>{{ poem.title }}</p>
 
+<div>
+        <a href="/poetic/{{ poem.author }}/{{ poem.title_slug }}/"> {{ poem.title }} </a>
+</div>
 
         {% endfor %}
 

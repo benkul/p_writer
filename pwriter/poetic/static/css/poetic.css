@@ -18,3 +18,13 @@ div.poetic :hover {
 }
 
 
+#poeticprofile {
+    text-decoration: none;
+    color: #FF9900;
+}
+
+#poeticprofile : hover {
+    text-decoration: none;
+    color: #FF99CC;
+
+}
