@@ -30,8 +30,7 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
-    def get_name(self):
-        return "%s" % self.user.username
+
 
 
 class Poem(models.Model):
