@@ -28,7 +28,6 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
     poem_dict = {}
     for line in range(lines):
         id = Poem.objects.get(pk=pk)
-        print id
         line = poem_gen.generate_markov_text(random.randrange(min_word, max_word))
         line = TextBlob(line)
         line = line.translate(to='es')
@@ -36,7 +35,6 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         line = line.translate(to='nl')
         line = line.translate(to='en')
         line = str(line)
-        print line
         final = Line.objects.create_line(id, line, n)
         poem_dict[n] = line
         n += 1

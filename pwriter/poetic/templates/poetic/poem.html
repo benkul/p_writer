@@ -5,13 +5,14 @@
 
 {% block body_block %}
 
-<h1>{{ poem.title }}</h1>
-<h5>by</h5>
-<h3>{{ poem.author }}</h3>
+<h3>{{ poem.title }}</h3>
+<h5> by {{ poem.author }} </h5>
 
 
-{{ poem.poem_getter }}
 
+{% for line in poem.poem_getter %}
+        {{ line }}<br>
 
+{% endfor %}
 
 {% endblock %}

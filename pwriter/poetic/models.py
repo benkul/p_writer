@@ -47,7 +47,10 @@ class Poem(models.Model):
         return self.title
 
     def poem_getter(self):
-        array = Line.objects.filter(poem_part=self.pk,).order_by('line_number')
+        line_list = []
+        for item in  Line.objects.filter(poem_part=self.pk).order_by('line_number'):
+            line_list.append(item)
+        return line_list
 
 
 
