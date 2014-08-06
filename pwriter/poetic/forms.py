@@ -8,7 +8,7 @@ class PoemForm(forms.ModelForm):
     num_lines = forms.IntegerField(help_text="Number of lines in poem", initial=randrange(4,8))
     min_lines = forms.IntegerField(help_text="Minimum words per line", initial=randrange(3, 5))
     max_lines = forms.IntegerField(help_text="Maximum words per line", initial=randrange(6, 9))
-    poem_source = forms.ModelChoiceField(queryset=SourceText.objects.all())
+    poem_source = forms.ModelChoiceField(queryset=SourceText.objects.all(), help_text="Source text for poem generation")
 
 
     class Meta:

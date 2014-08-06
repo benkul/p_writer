@@ -4,7 +4,7 @@
 
 
 {% block body_block %}
-        <div>
+        <div class="container-fluid">
               {% if user.is_authenticated %}
               {% else %}
                    <div class="alert alert-danger"> You must be logged in to compose poems </div>
@@ -13,7 +13,21 @@
 
                             <form id="form-control" method="post" action="/poetic/">
 
-                            {{ form.as_p }}
+
+                                {{ form.title.label }} <br>
+                                {{ form.title }}<br>
+
+                                {{ form.num_lines.help_text }} <br>
+                                {{ form.num_lines }}<br>
+
+                                {{ form.min_lines.help_text }} <br>
+                                {{ form.min_lines }}<br>
+
+                                {{ form.max_lines.help_text }} <br>
+                                {{ form.max_lines }}<br>
+
+                                {{ form.poem_source.help_text }} <br>
+                                {{ form.poem_source }}<br>
 
                     {% if user.is_authenticated %}
                             {% csrf_token %}

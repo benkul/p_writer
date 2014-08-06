@@ -4,7 +4,7 @@
 
 
 {% block body_block %}
-
+<div class="container-fluid">
 <h3>{{ poem.title }}</h3>
 <h5> by {{ poem.author }} </h5>
 
@@ -14,5 +14,5 @@
         {{ line }}<br>
 
 {% endfor %}
-
+</div>
 {% endblock %}

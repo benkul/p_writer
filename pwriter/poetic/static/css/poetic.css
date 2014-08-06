@@ -23,8 +23,10 @@ div.poetic :hover {
     color: #FF9900;
 }
 
-#poeticprofile : hover {
-    text-decoration: none;
-    color: #FF99CC;
 
+
+#poeticlink {
+    text-decoration: none;
+    color: #FF9900;
 }
+
