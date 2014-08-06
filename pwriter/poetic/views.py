@@ -75,15 +75,20 @@ def index(request):
     return render_to_response('poetic/index.html', {'form': form}, context)
 
 
+def retrieve_poem(request, username, title_slug):
+    context = RequestContext(request)
+    author = UserProfile.objects.get(user__username=username).pk
+    this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
+    context_dict = { 'poem' : this_poem }
+    return render_to_response('poetic/poem.html', context_dict, context)
+
+
 def get_poem(request, username, title_slug):
     context = RequestContext(request)
     print username
     print title_slug
     this_poem = get_object_or_404(Poem, author=username, title_slug=title_slug)
-
     context_dict = { 'poem' : this_poem }
-
-
     return render_to_response('poetic/poem.html', context_dict, context)
 
 
