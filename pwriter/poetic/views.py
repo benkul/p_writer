@@ -1,4 +1,7 @@
-
+import random
+import re
+import nltk
+from textblob import TextBlob
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404
 from django.utils.text import slugify
@@ -11,11 +14,10 @@ from poetic.forms import PoemForm, UserForm, UserProfileForm
 from poetic.poetic_bits import Markov
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.contrib.auth import authenticate, login
-import nltk
-from textblob import TextBlob
-import random
 
 
+
+#random languages translations
 
 #helper fucntion to generate poems
 def create_poem(title, author, lines, min_word, max_word, source, pk):
@@ -34,7 +36,8 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         line = line.translate(to='en')
         line = line.translate(to='nl')
         line = line.translate(to='en')
-        line = str(line)
+
+        line = unicode(line)
         final = Line.objects.create_line(id, line, n)
         poem_dict[n] = line
         n += 1
@@ -54,11 +57,34 @@ def index(request):
         form = PoemForm(request.POST)
         if form.is_valid():
             poem = form.save(commit=False)
+
+            print "looking for title {}, user {}".format(poem.title, request.user.username)
+            existing_poem_list = Poem.objects.filter(title__startswith=poem.title,
+                                                     author__user=request.user).order_by('title').values('title')
+
+            print existing_poem_list
+            exact_match = False
+            max_value = 0
+            p = re.compile('(.*)(_)(\d+)$') # returns (title) (_) (number)
+            for title_dict in existing_poem_list:
+                if title_dict['title'] == poem.title:
+                    #poem.title += "_%s" % len(existing_poem_list)
+                    exact_match = True
+                else:
+                    match_object = p.match(title_dict['title'])
+                    if match_object and match_object.groups()[0] == poem.title:
+                        max_value = max(int(match_object.groups()[2]), max_value)
+
+            if exact_match:
+                poem.title += "_%s" % (max_value + 1)
+
+                print "poem title changed to: %s" % poem.title
+
             poem.title_slug = slugify(poem.title)
 
             poem.author = UserProfile.objects.get(user=request.user)
             print poem.title
-            poem = form.save()
+            poem.save()# = form.save()
             print poem
             create_poem(poem.title, poem.author,
                                         poem.num_lines,
@@ -78,7 +104,7 @@ def index(request):
 
 def retrieve_poem(request, username, title_slug):
     context = RequestContext(request)
-    author = UserProfile.objects.get(user__username=username).pk
+    author = UserProfile.objects.get(user__username=username)#.pk
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
     context_dict = { 'poem' : this_poem }
     return render_to_response('poetic/poem.html', context_dict, context)
@@ -121,7 +147,7 @@ def register(request):
 
 def user_profile(request, username):
     context = RequestContext(request)
-    poems = Poem.objects.filter(author__user__username=username)
+    poems = Poem.objects.filter(author__user__username=username).order_by('title')
     context_dict = { "poems" : poems }
     return render_to_response('poetic/profile.html', context_dict, context)
 

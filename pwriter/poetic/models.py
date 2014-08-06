@@ -30,6 +30,10 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
+    def get_profile(self):
+        return "%s %s" % (self.website, self.picture)
+
+
 
 
 
@@ -50,6 +54,9 @@ class Poem(models.Model):
         for item in  Line.objects.filter(poem_part=self.pk).order_by('line_number'):
             line_list.append(item)
         return line_list
+
+    def poem_titler(self):
+        self.title = self.title
 
 
 

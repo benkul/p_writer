@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from random import randrange
 
 class PoemForm(forms.ModelForm):
-    title = forms.CharField(max_length = 120, initial="untitled")
+    title = forms.CharField(max_length = 120, help_text="Title (must be unique value)", initial="untitled")
     num_lines = forms.IntegerField(help_text="Number of lines in poem", initial=randrange(4,8))
     min_lines = forms.IntegerField(help_text="Minimum words per line", initial=randrange(3, 5))
     max_lines = forms.IntegerField(help_text="Maximum words per line", initial=randrange(6, 9))
