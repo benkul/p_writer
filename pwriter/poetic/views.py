@@ -67,7 +67,8 @@ def index(request):
                                         poem.poem_source,
                                         poem.pk)
 
-            return get_poem(request, poem.author, poem.title_slug)
+
+            return HttpResponseRedirect("/poetic/{}/{}/".format(poem.author, poem.title_slug))
         else:
             print form.errors
     else:
@@ -83,14 +84,6 @@ def retrieve_poem(request, username, title_slug):
     return render_to_response('poetic/poem.html', context_dict, context)
 
 
-def get_poem(request, username, title_slug):
-    context = RequestContext(request)
-    print username
-    print title_slug
-    this_poem = get_object_or_404(Poem, author=username, title_slug=title_slug)
-    context_dict = { 'poem' : this_poem }
-    return render_to_response('poetic/poem.html', context_dict, context)
-
 
 def register(request):
     context = RequestContext(request)
@@ -101,7 +94,7 @@ def register(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-
+            temp_pword = user.password
             user.set_password(user.password)
             user.save()
 
@@ -112,6 +105,11 @@ def register(request):
                 profile.picture = request.FILES['picture']
             profile.save()
             registered = True
+            print user.username
+            print user.password
+            sign_in = authenticate(username=user.username, password=temp_pword)
+            print "authenticated", sign_in.is_authenticated
+            login(request, sign_in)
         else:
             print user_form.errors, profile_form.errors
     else:
