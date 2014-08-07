@@ -82,7 +82,7 @@ def index(request):
             poem.author = UserProfile.objects.get(user=request.user)
             print poem.title
             poem.save()# = form.save()
-            print poem
+            print poem.title_slug
             create_poem(poem.title,
                         poem.author,
                         poem.num_lines,
@@ -102,11 +102,17 @@ def index(request):
 def retrieve_poem(request, username, title_slug):
     context = RequestContext(request)
     author = UserProfile.objects.get(user__username=username)#.pk
+    print title_slug, username
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
     context_dict = { 'poem' : this_poem }
     return render_to_response('poetic/poem.html', context_dict, context)
 
-
+def delete_poem(request, username, title_slug):
+    context = RequestContext(request)
+    author = UserProfile.objects.get(user__username=username)#.pk
+    print title_slug
+    this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug).delete()
+    return HttpResponseRedirect("/poetic/%s/" % username)
 
 def register(request):
     context = RequestContext(request)

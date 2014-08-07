@@ -1,5 +1,5 @@
 {% extends 'poetic/base.html' %}
-
+{% load static %}
 {% block title %}{% endblock %}
 
 
@@ -13,6 +13,23 @@
 {% for line in poem.poem_getter %}
         {{ line }}<br>
 
+
 {% endfor %}
+    <br>
+
 </div>
+
+<div class="container-fluid">
+
+    <div id="poetry_button">
+      <a id="plain_white" href="/poetic/{{ poem.author }}/{{ poem.title }}/delete/"><img src="{% static 'img/recycling.png' %}" /> delete poem</a>
+</div>
+<br>
+
+<div id="butt_button2">
+  <a id="butt_white2" href="/poetic/"><img src="{% static 'img/reload.png' %}" /> create another</a>
+
+</div>
+</div>
+
 {% endblock %}

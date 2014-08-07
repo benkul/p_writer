@@ -34,3 +34,30 @@ h4.poetic {
     text-decoration: none;
     color: #FF9900;
 }
+
+
+#plain_white, #butt_white2 {
+  text-decoration: none;
+    color: white;
+}
+
+
+
+#poetry_button, #butt_button2 {
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 18px;
+  background: #FF9900;
+  padding: 8px 10px 8px 10px;
+  text-decoration: none;
+  max-width:160px;
+
+
+#poetry_button:hover, #butt_button2:hover {
+  background: #ff9800;
+  text-decoration: none;
+}
+
