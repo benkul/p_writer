@@ -3,13 +3,12 @@ from django import forms
 from poetic.models import Poem, Line, SourceText, UserProfile
 from django.contrib.auth.models import User
 
-#TODO: build random list for creating initial values for poem title
 
 class PoemForm(forms.ModelForm):
     title = forms.CharField(max_length = 120, help_text="Title (must be unique value)", initial='untitled')
-    num_lines = forms.IntegerField(help_text="Number of lines in poem", initial=randrange(4,8))
-    min_lines = forms.IntegerField(help_text="Minimum words per line", initial=randrange(3, 5))
-    max_lines = forms.IntegerField(help_text="Maximum words per line", initial=randrange(6, 9))
+    num_lines = forms.ChoiceField(help_text="Number of lines in poem", initial=3, choices=[(x, x) for x in range(2, 10)])
+    min_lines = forms.ChoiceField(help_text="Minimum words per line", initial=randrange(3, 5), choices=[(x, x) for x in range(2, 6)])
+    max_lines = forms.ChoiceField(help_text="Maximum words per line", initial=randrange(6, 10), choices=[(x, x) for x in range(5, 11)])
     poem_source = forms.ModelChoiceField(queryset=SourceText.objects.all(), help_text="Source text for poem generation")
 
 
