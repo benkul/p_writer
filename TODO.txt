@@ -1,0 +1,9 @@
+TODO list 
+#fix poem form display
+#auto login from registration
+# clean up translation code so it doesn't generate errors
+#review html to make sure every page displays properly
+#delete DB & populate with real data
+- deploy website
+# ensure no duplicate titles
+
