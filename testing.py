@@ -1,7 +1,7 @@
 import nltk
 import random
 from textblob import TextBlob
-
+import re
 
 
 class Markov(object):
@@ -52,25 +52,72 @@ class Markov(object):
 	gen_words.append(w2)
 	return ' '.join(gen_words)
 
-file = open('forestry5.txt', 'r')
+file = open('forestry2.txt', 'r')
 poem_gen = Markov(file)
 
 n=1
 poem_dict = {}
-
-for item in range(7):
-	#id = Poem.pk
-	#print poem_gen
-	#line = "hippos shit all over the palace"
-	line = poem_gen.generate_markov_text(random.randrange(2,10))
-	line = TextBlob(line)
-	line = line.translate(to='es')
-	line = line.translate(to='en')
-	line = line.translate(to='nl')
-	line = line.translate(to='en')
-	line = str(line)
-	print line
-	#Line.create(poem_part=id, poem_line=line, line_number=n)
-	n += 1
+language_options = ['bg', 'da', 'eo', 'fr', 'de', 'el', 'is', 'ga', 'it', 'ja', 'es']
+language_choice = random.choice(language_options)
+# for item in range(20):
+	# #id = Poem.pk
+	# #print poem_gen
+	# #line = "hippos shit all over the palace"
+	# line = poem_gen.generate_markov_text(random.randrange(3,9))
+	# line = TextBlob(line)
+	# # line = line.translate(to=random.choice(language_options))
+	# # line = line.translate(to=random.choice(language_options))
 	
+	# # #print language_choice
+	# # line = line.translate(to=random.choice(language_options))
+	# # line = line.translate(to='en')
+	# line = str(line)
+	# if line.find('the', (len(line) - 3), len(line)) == (len(line) - 3):
+		# line += " %s" % poem_gen.generate_markov_text(0)
+	# if line.find('and', (len(line) - 3), len(line)) == (len(line) - 3):
+		# line += " %s" % poem_gen.generate_markov_text(0)
+	# print line
+	# #Line.create(poem_part=id, poem_line=line, line_number=n)
+	# n += 1
 
+def poem_maker(lines, min_word, max_word):
+	n=1
+	line_list = []
+	for line in range(lines):
+		words_in_line = random.randrange(min_word, max_word)
+		line = poem_gen.generate_markov_text(words_in_line)
+		line_list.append( [n, words_in_line, line] )
+		n += 1
+	print line_list	
+	#generate all poem lines
+	line_string = ""
+	# convert to string for translation
+	for item in line_list:
+		line_string += str(item[2] + " ")
+	line_string = TextBlob(line_string)
+	line_string = line_string.translate(to='ja')
+	line_string = line_string.translate(to='en')
+	line_string = unicode(line_string)
+	#break back into lines
+	word_list = re.sub("[^\w]", " ", line_string).split()
+	#print "list of words: %s" % word_list
+	for line in line_list:
+		x = 0
+		temp_list = []
+		temp = ""
+		while x <= (line[1]):
+			try:
+				temp_list.append(word_list.pop(0))
+				
+			except IndexError:
+				x = line[1]
+			x += 1
+		#temp_list = word_list.slice([0,(line[1] or -1)])
+		for item in temp_list:
+			temp += "%s " % item
+		line[2] = temp
+		#final = Line.objects.create_line(id, line[2], line[0])
+		print line[2]
+
+		
+poem_maker(3, 4, 7)

@@ -34,6 +34,51 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
     for line in range(lines):
         words_in_line = random.randrange(min_word, max_word)
         line = poem_gen.generate_markov_text(words_in_line)
+        line_list.append( [n, words_in_line, line] )
+        n += 1
+    print line_list
+    #generate all poem lines
+    line_string = ""
+    # convert to string for translation
+    for item in line_list:
+        line_string += str(item[2] + " ")
+    line_string = TextBlob(line_string)
+    line_string = line_string.translate(to='ja')
+    line_string = line_string.translate(to='en')
+    line_string = line_string.translate(to='fr')
+    line_string = line_string.translate(to='en')
+    line_string = unicode(line_string)
+    #break back into lines
+    word_list = re.sub("[^\w]", " ", line_string).split()
+    #print "list of words: %s" % word_list
+    for line in line_list:
+        x = 0
+        temp_list = []
+        temp = ""
+        while x <= (line[1]):
+            try:
+                temp_list.append(word_list.pop(0))
+
+            except IndexError:
+                x = line[1]
+            x += 1
+        #temp_list = word_list.slice([0,(line[1] or -1)])
+        for item in temp_list:
+            temp += "%s " % item
+        line[2] = temp
+        final = Line.objects.create_line(id, line[2], line[0])
+        print line[2]
+
+
+
+
+
+
+
+    """
+    for line in range(lines):
+        words_in_line = random.randrange(min_word, max_word)
+        line = poem_gen.generate_markov_text(words_in_line)
         line = TextBlob(line)
         line = line.translate(to='ja')
         line = line.translate(to='en')
@@ -43,7 +88,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         line = unicode(line)
         final = Line.objects.create_line(id, line, n)
         line_list.append(words_in_line)
-        n += 1
+        n += 1"""
 
 
 
