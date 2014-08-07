@@ -116,7 +116,7 @@ def poem_maker(lines, min_word, max_word):
 		for item in temp_list:
 			temp += "%s " % item
 		line[2] = temp
-		#final = Line.objects.create_line(id, line[2], line[0])
+		final = Line.objects.create_line(id, line[2], line[0])
 		print line[2]
 
 		
