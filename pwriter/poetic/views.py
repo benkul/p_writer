@@ -19,12 +19,14 @@ from django.contrib.auth import authenticate, login
 #language_options = ['bg', 'da', 'eo', 'fr', 'de', 'el', 'is', 'ga', 'it', 'ja', 'es']
 #random languages translations?
 
-#helper fucntion to generate poems
+
+
+#helper function to generate poems
 def create_poem(title, author, lines, min_word, max_word, source, pk):
     text = SourceText.objects.get(name=source)
     print text.get_location()
 
-    text = open(text.get_location(), 'r') #TODO: build path to static file
+    text = open(text.get_location(), 'r')
     poem_gen = Markov(text)
     n=1
     line_list = []
@@ -42,16 +44,6 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         final = Line.objects.create_line(id, line, n)
         line_list.append(words_in_line)
         n += 1
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,20 +83,20 @@ def index(request):
             print poem.title
             poem.save()# = form.save()
             print poem
-            create_poem(poem.title, poem.author,
-                                        poem.num_lines,
-                                        poem.min_words,
-                                        poem.max_words,
-                                        poem.poem_source,
-                                        poem.pk)
-
-
+            create_poem(poem.title,
+                        poem.author,
+                        poem.num_lines,
+                        poem.min_words,
+                        poem.max_words,
+                        poem.poem_source,
+                        poem.pk)
             return HttpResponseRedirect("/poetic/{}/{}/".format(poem.author, poem.title_slug))
         else:
             print form.errors
     else:
         form = PoemForm()
     return render_to_response('poetic/index.html', {'form': form}, context)
+
 
 
 def retrieve_poem(request, username, title_slug):
@@ -150,11 +142,14 @@ def register(request):
         {'user_form' : user_form, 'profile_form' : profile_form, 'registered': registered},
         context)
 
+
+
 def user_profile(request, username):
     context = RequestContext(request)
     poems = Poem.objects.filter(author__user__username=username).order_by('title')
     context_dict = { "poems" : poems }
     return render_to_response('poetic/profile.html', context_dict, context)
+
 
 
 def user_login(request):
@@ -198,7 +193,8 @@ def user_login(request):
         return render_to_response('poetic/login.html', {}, context)
 
 
-# Use the login_required() decorator to ensure only those logged in can access the view.
+
+
 @login_required
 def user_logout(request):
     context = RequestContext(request)

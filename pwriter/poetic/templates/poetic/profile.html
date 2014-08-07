@@ -9,7 +9,12 @@
         {% for poem in poems %}
 
 <div>
-        <a href="/poetic/{{ poem.author }}/{{ poem.title_slug }}/"> {{ poem.title }} </a>
+        <a href="/poetic/{{ poem.author }}/{{ poem.title_slug }}/"> {{ poem.title }} </a><br>
+    {% comment %}
+    {% for line in poem.poem_getter %}
+            {{ line }}<br>
+        {% endfor %}
+    {% endcomment %}
 </div>
 
         {% endfor %}
