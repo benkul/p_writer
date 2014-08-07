@@ -16,8 +16,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.contrib.auth import authenticate, login
 
 
-
-#random languages translations
+#language_options = ['bg', 'da', 'eo', 'fr', 'de', 'el', 'is', 'ga', 'it', 'ja', 'es']
+#random languages translations?
 
 #helper fucntion to generate poems
 def create_poem(title, author, lines, min_word, max_word, source, pk):
@@ -27,24 +27,29 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
     text = open(text.get_location(), 'r') #TODO: build path to static file
     poem_gen = Markov(text)
     n=1
-    poem_dict = {}
+    line_list = []
+    id = Poem.objects.get(pk=pk)
     for line in range(lines):
-        id = Poem.objects.get(pk=pk)
-        line = poem_gen.generate_markov_text(random.randrange(min_word, max_word))
+        words_in_line = random.randrange(min_word, max_word)
+        line = poem_gen.generate_markov_text(words_in_line)
         line = TextBlob(line)
-        line = line.translate(to='es')
+        line = line.translate(to='ja')
         line = line.translate(to='en')
-        line = line.translate(to='nl')
+        line = line.translate(to='ja')
         line = line.translate(to='en')
 
         line = unicode(line)
         final = Line.objects.create_line(id, line, n)
-        poem_dict[n] = line
+        line_list.append(words_in_line)
         n += 1
-    poem_dict['author'] = author
-    poem_dict['title'] = title
-    poem_dict['number_of_lines'] = lines
-    return poem_dict
+
+
+
+
+
+
+
+
 
 
 
