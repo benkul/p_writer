@@ -36,14 +36,17 @@ h4.poetic {
 }
 
 
-#plain_white, #butt_white2 {
+#plain_white {
   text-decoration: none;
     color: white;
 }
 
+#poetry_white2 {
+  text-decoration: none;
+    color: white;
+}
 
-
-#poetry_button, #butt_button2 {
+#poetry_button {
   -webkit-border-radius: 11;
   -moz-border-radius: 11;
   border-radius: 11px;
@@ -54,10 +57,26 @@ h4.poetic {
   padding: 8px 10px 8px 10px;
   text-decoration: none;
   max-width:160px;
+}
 
-
-#poetry_button:hover, #butt_button2:hover {
+#poetry_button2 {
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 18px;
+  background: #FF9900;
+  padding: 8px 10px 8px 10px;
+  text-decoration: none;
+  max-width:160px;
+}
+#poetry_button:hover {
   background: #ff9800;
   text-decoration: none;
 }
 
+#poetry_button2:hover {
+  background: #ff9800;
+  text-decoration: none;
+}
