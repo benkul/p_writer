@@ -11,25 +11,63 @@
 
 
 {% for line in poem.poem_getter %}
-        {{ line }}<br>
+        {{ line }}<div><button class="btn btn-warning btn-small">edit line</button>
+
+        </div><br>
+
 
 
 {% endfor %}
+
+
     <br>
+
+
 
 </div>
 
 <div class="container-fluid">
+    <script>
 
-    <div id="poetry_button">
-      <a id="plain_white" href="/poetic/{{ poem.author }}/{{ poem.title }}/delete/"><img src="{% static 'img/recycling.png' %}" /> delete poem</a>
+    </script>
+<div>
+  <button class="btn btn-warning" onclick="  " ><img src="{% static 'img/pen43white.png' %}" /> edit poem</button>
 </div>
+    <br>
+
+
+
+<div>
+      <button class ="btn btn-warning" onclick="delete_poem()"> <img src="{% static 'img/recycling.png' %}" /> delete poem</button>
+</div>  <!--id="plain_white" href="/poetic/{{ poem.author }}/{{ poem.title }}/delete/"-->
 <br>
+    <script>
+        function delete_poem(){
 
-<div id="poetry_button2">
-  <a id="poetry_white2" href="/poetic/"><img src="{% static 'img/reload.png' %}" /> create another</a>
 
+        }
+
+
+
+    </script>
+
+
+<div>
+  <button class="btn btn-warning" onclick="create_new_poem()"> <img src="{% static 'img/reload.png' %}" /> create another</button>
+    <!--href="/poetic/"-->
 </div>
+    <script>
+        function create_new_poem(){
+
+
+        }
+
+
+
+    </script>
+
+
+
 </div>
 
 {% endblock %}

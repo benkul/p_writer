@@ -148,7 +148,7 @@ def index(request):
 
 def retrieve_poem(request, username, title_slug):
     context = RequestContext(request)
-    author = UserProfile.objects.get(user__username=username)#.pk
+    author = UserProfile.objects.get(user__username=username)
     print title_slug, username
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
     context_dict = { 'poem' : this_poem }
@@ -156,7 +156,7 @@ def retrieve_poem(request, username, title_slug):
 
 def delete_poem(request, username, title_slug):
     context = RequestContext(request)
-    author = UserProfile.objects.get(user__username=username)#.pk
+    author = UserProfile.objects.get(user__username=username)
     print title_slug
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug).delete()
     return HttpResponseRedirect("/poetic/%s/" % username)
@@ -256,3 +256,10 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return render_to_response('poetic/logout.html', {}, context)
+
+def edit_poem(request, username, title_slug):
+    context = RequestContext(request)
+    author = UserProfile.objects.get(user__username=username)
+    print title_slug, username
+    this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
+    lines_in_poem = this_poem.poem_getter()
