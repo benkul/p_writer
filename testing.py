@@ -52,7 +52,7 @@ class Markov(object):
 	gen_words.append(w2)
 	return ' '.join(gen_words)
 
-file = open('forestry2.txt', 'r')
+file = open('forestry6.txt', 'r')
 poem_gen = Markov(file)
 
 n=1
@@ -116,7 +116,7 @@ def poem_maker(lines, min_word, max_word):
 		for item in temp_list:
 			temp += "%s " % item
 		line[2] = temp
-		final = Line.objects.create_line(id, line[2], line[0])
+		#final = Line.objects.create_line(id, line_list[2], line_list[0])
 		print line[2]
 
 		

@@ -38,6 +38,7 @@
             <state line="71" column="22" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.8817427" vertical-offset="357" max-vertical-offset="4471">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <marker date="1407449507815" expanded="true" signature="911:2980" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -65,7 +66,11 @@
         <entry file="file://$PROJECT_DIR$/poetic/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="40" column="44" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
-              <folding />
+              <folding>
+                <marker date="1407359830908" expanded="true" signature="716:1016" placeholder="..." />
+                <marker date="1407359830908" expanded="true" signature="1047:1726" placeholder="..." />
+                <marker date="1407359830908" expanded="true" signature="1694:1726" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,6 +99,7 @@
             <state line="5" column="0" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
+                <marker date="1407447627031" expanded="true" signature="202:943" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -262,7 +268,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/projects/twitterproject" />
     <property name="SearchEverywhereHistory" value="&lt;div" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -409,7 +415,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1352" y="-495" width="1936" height="1096" extended-state="6" />
+    <frame x="1352" y="-495" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -698,6 +704,7 @@
         <state line="5" column="0" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+            <marker date="1407447627031" expanded="true" signature="202:943" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -733,7 +740,11 @@
     <entry file="file://$PROJECT_DIR$/poetic/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="44" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
-          <folding />
+          <folding>
+            <marker date="1407359830908" expanded="true" signature="716:1016" placeholder="..." />
+            <marker date="1407359830908" expanded="true" signature="1047:1726" placeholder="..." />
+            <marker date="1407359830908" expanded="true" signature="1694:1726" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -742,6 +753,7 @@
         <state line="71" column="22" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.8817427" vertical-offset="357" max-vertical-offset="4471">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <marker date="1407449507815" expanded="true" signature="911:2980" placeholder="..." />
           </folding>
         </state>
       </provider>
