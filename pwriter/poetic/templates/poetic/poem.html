@@ -1,26 +1,43 @@
 {% extends 'poetic/base.html' %}
 {% load static %}
-{% block title %}{% endblock %}
+{% block head %}                {% endblock %}
+{% block title %}               {% endblock %}
 
 
 {% block body_block %}
-<div class="container-fluid">
+<div class="container-fluid" id="poem_area">
 <h3>{{ poem.title }}</h3>
 <h5> by {{ poem.author }} </h5>
 
 
 
 {% for line in poem.poem_getter %}
-       <p id="line{{ forloop.counter }}">
-           {{ line }}
-           <button style="visibility:hidden;" id="edit_button{{forloop.counter}}" class="btn btn-warning btn-small">edit line</button>
-           <button style="visibility:hidden;" id="save_edit_button{{forloop.counter}}" class="btn btn-warning btn-small">save changes</button>
-           <button style="visibility:hidden;" id="cancel_edit_button{{forloop.counter}}" class="btn btn-warning btn-small">cancel changes</button>
+       <span id="line{{ forloop.counter }}">{{ line }}</span>
+           <span><button style="visibility:hidden;" onclick="line_edit{{ forloop.counter }}()"
+                   id="edit_button{{forloop.counter}}" class="btn btn-warning btn-small">edit line</button></span><br>
+
+<!-- TODO: 1)make the edit button turn to editable textfield with ajax
+    TODO: 2) cause the save button below to submit changes to DB and switch line back to regular text
+    TODO: 3) cause the cancel button to discard edits and return line back to regular text
+-->
+<script>
+
+
+    var line_edit{{ forloop.counter }} = function(){
+
+    console.log("10:10:10");
+    var origline;
+        origline = $("#line{{ forloop.counter }}").html();
+        console.log(origline);
+        $.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/edit/', { 'swapline' : origline }, function(data){
+        $('#line{{ forloop.counter }}').html(data);
+        });
+
+    };
+</script>
+
+
 {% endfor %}
-
-
-
-
 
 </div>
 
@@ -33,7 +50,7 @@
     <button style="visibility:hidden;" id="cancel_edit_button" class="btn btn-warning">cancel changes</button>
 </div>
     <br>
-
+<!-- turns on and off buttons for editing lines, saving/cancelling changes -->
     <script>
     function edit_view() {
     {% for line in poem.poem_getter %}

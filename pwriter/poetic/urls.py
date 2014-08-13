@@ -13,5 +13,5 @@ urlpatterns = patterns('',
                        url(r'^(?P<username>[0-9a-zA-Z\-\+@_\.]+)/(?P<title_slug>[0-9a-zA-Z\-\+@_\.]+)/delete/$',
                            views.delete_poem, name='delete_poem'),
                        url(r'^(?P<username>[0-9a-zA-Z\-\+@_\.]+)/(?P<title_slug>[0-9a-zA-Z\-\+@_\.]+)/edit/$',
-                           views.edit_line, name='edit_line'),
+                           views.poem_to_edit_line, name='edit_line'),
                        )
