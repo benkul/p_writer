@@ -77,20 +77,6 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
 
 
 
-    """
-    for line in range(lines):
-        words_in_line = random.randrange(min_word, max_word)
-        line = poem_gen.generate_markov_text(words_in_line)
-        line = TextBlob(line)
-        line = line.translate(to='ja')
-        line = line.translate(to='en')
-        line = line.translate(to='ja')
-        line = line.translate(to='en')
-
-        line = unicode(line)
-        final = Line.objects.create_line(id, line, n)
-        line_list.append(words_in_line)
-        n += 1"""
 
 
 
@@ -257,9 +243,31 @@ def user_logout(request):
     # Take the user back to the homepage.
     return render_to_response('poetic/logout.html', {}, context)
 
-def edit_poem(request, username, title_slug):
+@login_required
+def edit_line(request):
     context = RequestContext(request)
+    author = UserProfile.objects.get(user__username=request.user.username)
+    line_num = request.GET['line']
+    title = request.GET['title']
+    print line_num, title
+    this_poem = get_object_or_404(Poem, author=author, title_slug=title)
+    #TODO: add graceful return for 404 error
+
+
+
+def save_line(request, username, title_slug, line_number):
     author = UserProfile.objects.get(user__username=username)
-    print title_slug, username
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
-    lines_in_poem = this_poem.poem_getter()
+    current_line = Line.objects.get(poem_part=this_poem.pk)
+    print request.GET['poem_line']
+    current_line.save()
+    return HttpResponse(current_line)
+
+
+def poem_to_edit_line(request):
+    if request.GET:
+        swaptext = request.GET['line']
+        lineid = request.GET['id']
+        return HttpResponse("<input id='lineid' type='text' value='" + swaptext + "' name='newlineq'><button type='button' onclick='ajaxsubmit()' class='btn'> Submit</button>")
+
+

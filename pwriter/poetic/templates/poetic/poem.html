@@ -11,54 +11,72 @@
 
 
 {% for line in poem.poem_getter %}
-        {{ line }}<!--div><button class="btn btn-warning btn-small">edit line</button>
-
-        </div--><br>
-
-
-
+       <p id="line{{ forloop.counter }}">
+           {{ line }}
+           <button style="visibility:hidden;" id="edit_button{{forloop.counter}}" class="btn btn-warning btn-small">edit line</button>
+           <button style="visibility:hidden;" id="save_edit_button{{forloop.counter}}" class="btn btn-warning btn-small">save changes</button>
+           <button style="visibility:hidden;" id="cancel_edit_button{{forloop.counter}}" class="btn btn-warning btn-small">cancel changes</button>
 {% endfor %}
 
 
-    <br>
 
 
 
 </div>
+
 
 <div class="container-fluid">
-    <script>
 
-    </script>
 <div>
-  <button class="btn btn-warning" onclick="  " ><img src="{% static 'img/pen43white.png' %}" /> edit poem</button>
+  <button class="btn btn-warning" onclick="edit_view();"><img src="{% static 'img/pen43white.png' %}" /> edit poem</button>
+    <button style="visibility:hidden;" id="save_edit_button" class="btn btn-warning">save changes</button>
+    <button style="visibility:hidden;" id="cancel_edit_button" class="btn btn-warning">cancel changes</button>
 </div>
     <br>
 
+    <script>
+    function edit_view() {
+    {% for line in poem.poem_getter %}
+
+    if (document.getElementById('edit_button{{ forloop.counter }}').style.visibility == "visible"){
+        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="hidden";
+}
+    else {
+        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="visible";
+        }
+    {% endfor %}
+    if (document.getElementById('save_edit_button').style.visibility == "visible"){
+        document.getElementById('save_edit_button').style.visibility="hidden";
+        document.getElementById('cancel_edit_button').style.visibility="hidden";
+}
+    else {
+        document.getElementById('save_edit_button').style.visibility="visible";
+        document.getElementById('cancel_edit_button').style.visibility="visible";
+    }}
+
+    </script>
 
 
 <div>
       <button class ="btn btn-warning" onclick="delete_poem()"> <img src="{% static 'img/recycling.png' %}" /> delete poem</button>
-</div>  <!--id="plain_white" href="/poetic/{{ poem.author }}/{{ poem.title }}/delete/"-->
+</div>
 <br>
     <script>
         function delete_poem(){
-
+        window.location.pathname='{% url 'delete_poem' username=poem.author title_slug=poem.title %}'
 
         }
-
-
 
     </script>
 
 
 <div>
   <button class="btn btn-warning" onclick="create_new_poem()"> <img src="{% static 'img/reload.png' %}" /> create another</button>
-    <!--href="/poetic/"-->
+
 </div>
     <script>
         function create_new_poem(){
-
+        window.location.pathname='{% url 'index' %}'
 
         }
 

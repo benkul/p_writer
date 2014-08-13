@@ -28,3 +28,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
+
+class LineEditForm(forms.ModelForm):
+    class Meta:
+        model = Line
+        fields = ('poem_line',)
