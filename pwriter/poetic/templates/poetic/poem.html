@@ -12,31 +12,44 @@
 
 
 {% for line in poem.poem_getter %}
-       <span id="line{{ forloop.counter }}">{{ line }}</span>
-           <span><button style="visibility:hidden;" onclick="line_edit{{ forloop.counter }}()"
-                   id="edit_button{{forloop.counter}}" class="btn btn-warning btn-small">edit line</button></span><br>
+       <span id="line{{ forloop.counter }}">{{ line }}</span><br>
 
-<!-- TODO: 1)make the edit button turn to editable textfield with ajax
-    TODO: 2) cause the save button below to submit changes to DB and switch line back to regular text
-    TODO: 3) cause the cancel button to discard edits and return line back to regular text
+
+<!-- TODO: 1) have individual lines open/close for editing when click edit line button
+    TODO: 2) cause the save button below to submit all changes to DB and refresh page
 -->
 <script>
 
 
-    var line_edit{{ forloop.counter }} = function(){
-    var origline;
-        origline = $("#line{{ forloop.counter }}").html();
-        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="hidden";
-        $.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/edit/', { 'swapline' : origline }, function(data){
-        $('#line{{ forloop.counter }}').html(data);
-        });
+var linesubmit{{ forloop.counter }} = function(){
+var swapline;
 
-    };
+swapline = $("#edit_line_text_field").val();
+// use ajax to call view function. Process 'data' in the call back function
+$.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/line_submit/', {swapline : swaptext}, function(data){
+$('#line{{forloop.counter }}').html(data);
+});
+};
 
 </script>
 
 
 {% endfor %}
+<script>
+    var save_changes = function(){
+    var author;
+    var title;
+    author = '{{ poem.author }}'
+    title = '{{ poem.title_slug }}'
+    poem = {{ poem.pk }}
+    poem_lines = {{ poem.num_lines }}
+    $.get('/poetic/' + author + '/' + title + '/save_edit/', { poem : poem, lines: poem_lines })
+    }
+
+
+
+</script>
+
 
 </div>
 
@@ -45,23 +58,20 @@
 
 <div>
   <button class="btn btn-warning" onclick="edit_view();"><img src="{% static 'img/pen43white.png' %}" /> edit poem</button>
-    <button style="visibility:hidden;" id="save_edit_button" class="btn btn-warning">save changes</button>
-    <button style="visibility:hidden;" id="cancel_edit_button" class="btn btn-warning">cancel changes</button>
+    <button style="visibility:hidden;" onclick="save_changes();" id="save_edit_button" class="btn btn-warning">commit changes</button>
+    <button style="visibility:hidden;" onclick='cancel_edit_changes();' id="cancel_edit_button" class="btn btn-warning">cancel changes</button>
 </div>
     <br>
+    <script>
+    function cancel_edit_changes(){
+        window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';
+        }
+</script>
+
 <!-- turns on and off buttons for editing lines, saving/cancelling changes -->
     <script>
     function edit_view() {
 
-    {% for line in poem.poem_getter %}
-
-    if (document.getElementById('edit_button{{ forloop.counter }}').style.visibility == "visible"){
-        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="hidden";
-}
-    else {
-        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="visible";
-        }
-    {% endfor %}
     if (document.getElementById('save_edit_button').style.visibility == "visible"){
         document.getElementById('save_edit_button').style.visibility="hidden";
         document.getElementById('cancel_edit_button').style.visibility="hidden";
@@ -69,7 +79,29 @@
     else {
         document.getElementById('save_edit_button').style.visibility="visible";
         document.getElementById('cancel_edit_button').style.visibility="visible";
-    }}
+    }
+    {% for line in poem.poem_getter %}
+    var origline;
+        origline = $("#line{{ forloop.counter }}").html();
+        $.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/edit/', { 'swapline' : origline }, function(data){
+        $('#line{{ forloop.counter }}').html(data);
+        });
+    {% endfor %}
+    }
+
+    </script>
+
+    <script>
+        function save_changes(){
+    var poem_dict = [];
+    var newline;
+    {% for line in poem.poem_getter %}
+        newline = $("#line{{ forloop.counter }}").html();
+        poem_dict[{{ forloop.counter }}] = newline;
+    {% endfor %}
+        $.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/save_edits/', { poem : poem_dict } )
+        }
+
 
     </script>
 
