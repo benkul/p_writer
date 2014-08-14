@@ -257,27 +257,34 @@ def edit_line(request):
 
 def save_edits(request, username, title_slug):
     context = RequestContext(request)
-    print request.GET['poem']
-    lines_to_save = Line.objects.filter(poem_part=request.GET['poem'])
-    for line in lines_to_save:
-        print line
-        line.save()
     author = UserProfile.objects.get(user__username=request.user.username)
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
-    context_dict = { 'poem' : this_poem }
-    return render_to_response('poetic/poem.html', context_dict, context)
+    print this_poem.pk
+    print "Get request", request.GET
+    lines_to_save = Line.objects.filter(poem_part=this_poem.pk)
+    print "LTS", lines_to_save
+    for i, line in enumerate(lines_to_save):
+        print 'for line' , line
+        new_line = request.GET['content'][i]
+        print 'new line' , new_line
+        print line.line_number, new_line[i+1]
+        if line.line_number==new_line[i+1]:
+            line = new_line
+            line.save()
+
 
 
 def poem_to_edit_line(request, username, title_slug):
     swapline = 'undefined'
     if request.GET:
         swapline = request.GET['swapline']
+        line_id = request.GET['line_id']
         if swapline == "":
             swapline = "(empty)"
         else:
             pass
     return HttpResponse(
-        '<input id="edit_line_text_field" type="text" value="'+ swapline +'" name="newlineq">')#<button type="button" onclick="linesubmit()" class="btn btn-warning btn-small"> Submit Line Change</button> ')
+        '<input id="newtext' + line_id + '" type="text" value="'+ swapline +'" name="newlineq">')#<button type="button" onclick="linesubmit()" class="btn btn-warning btn-small"> Submit Line Change</button> ')
 
 def line_submit(request, username, title_slug):
     if request.GET:
