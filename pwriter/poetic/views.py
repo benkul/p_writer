@@ -267,14 +267,11 @@ def save_line(request, username, title_slug, line_number):
 def poem_to_edit_line(request, username, title_slug):
     swapline = 'undefined'
     if request.GET:
-        print request.GET['swapline']
         swapline = request.GET['swapline']
-        print swapline
         if swapline == "":
             swapline = "(empty)"
         else:
             pass
     return HttpResponse(
-        '<input id="edit_line_text_field" type="text" value="'+ swapline +'" name="newlineq"><button type="button" '
-                                                                       'onclick="ajaxsubmit()" '
-                                                                       'class="btn"> Submit </button> ')
+        '<input id="edit_line_text_field" type="text" value="'+ swapline +'" name="newlineq">')
+            #<button type="button" onclick="ajaxsubmit()" class="btn"> Submit </button> ')

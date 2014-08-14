@@ -24,16 +24,15 @@
 
 
     var line_edit{{ forloop.counter }} = function(){
-
-    console.log("10:10:10");
     var origline;
         origline = $("#line{{ forloop.counter }}").html();
-        console.log(origline);
+        document.getElementById('edit_button{{ forloop.counter }}').style.visibility="hidden";
         $.get('/poetic/{{ poem.author }}/{{ poem.title_slug }}/edit/', { 'swapline' : origline }, function(data){
         $('#line{{ forloop.counter }}').html(data);
         });
 
     };
+
 </script>
 
 
@@ -53,6 +52,7 @@
 <!-- turns on and off buttons for editing lines, saving/cancelling changes -->
     <script>
     function edit_view() {
+
     {% for line in poem.poem_getter %}
 
     if (document.getElementById('edit_button{{ forloop.counter }}').style.visibility == "visible"){
