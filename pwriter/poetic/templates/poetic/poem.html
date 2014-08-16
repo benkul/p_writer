@@ -39,7 +39,8 @@ $('#line{{forloop.counter }}').html(data);
     var save_changes = function(){
     var author;
     var title;
-    content = new Array();
+    var content = "";
+    number = new Array();
 
     author = '{{ poem.author }}';
     title = '{{ poem.title_slug }}';
@@ -47,18 +48,24 @@ $('#line{{forloop.counter }}').html(data);
     poem_lines = {{ poem.num_lines }};
     {% for line in poem.poem_getter %}
 
-    content[{{ forloop.counter|add:-1 }}] = $("#newtext{{ forloop.counter}}").val();
+    content += $("#newtext{{ forloop.counter }}").val();
+    content += "^^"
 
+    console.log(content)
     {% endfor %}
-    $.get('/poetic/' + author + '/' + title + '/save_edits/', { 'content[]': content });
+
+    $.get('/poetic/' + author + '/' + title + '/save_edits/', { 'content' : content }, function(data){
     window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';
     }
+    );
+
+     }
 
 
 
 </script>
 
-
+<!--  window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';   -->
 </div>
 
 

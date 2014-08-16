@@ -28,7 +28,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
 
     text_file = open(source_text.get_location(), 'r')
     poem_gen = Markov(text_file)
-    n=1
+    n=0
     line_list = []
     id = Poem.objects.get(pk=pk)
     for line in range(lines):
@@ -259,18 +259,23 @@ def save_edits(request, username, title_slug):
     context = RequestContext(request)
     author = UserProfile.objects.get(user__username=request.user.username)
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
-    print this_poem.pk
-    print "Get request", request.GET
     lines_to_save = Line.objects.filter(poem_part=this_poem.pk)
-    print "LTS", lines_to_save
+    print "all old lines", lines_to_save
+    new_lines_string = request.GET['content']
+    print 'new line string: ' , new_lines_string
+    new_lines_array = new_lines_string.split("^^")
+    print "New line Array: ", new_lines_array
     for i, line in enumerate(lines_to_save):
-        print 'for line' , line
-        new_line = request.GET['content'][i]
-        print 'new line' , new_line
-        print line.line_number, new_line[i+1]
-        if line.line_number==new_line[i+1]:
-            line = new_line
-            line.save()
+        x = line.line_number
+        print line.line_number
+        print new_lines_array[i]
+        line_to_save = Line.objects.get(poem_part=this_poem.pk, line_number=i)
+        line_to_save.poem_line = new_lines_array[i]
+        line_to_save.save()
+    this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
+    context_dict = { 'poem' : this_poem }
+    data = "/poetic/" + username +"/" + title_slug + "/"
+    return HttpResponse(data)
 
 
 

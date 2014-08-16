@@ -35,7 +35,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="41" selection-start="9896" selection-end="9896" vertical-scroll-proportion="0.0" vertical-offset="4046" max-vertical-offset="4828">
+            <state line="298" column="9" selection-start="11141" selection-end="11141" vertical-scroll-proportion="0.0" vertical-offset="4142" max-vertical-offset="4913">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="25" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0" vertical-offset="398" max-vertical-offset="1479">
+            <state line="42" column="25" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="1479">
               <folding />
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file leaf-file-name="poetic-ajax.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/static/js/poetic-ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="1" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="238">
+            <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="-0.68" vertical-offset="0" max-vertical-offset="119">
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="poem.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/poetic/templates/poetic/poem.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="4" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.615942" vertical-offset="527" max-vertical-offset="2601">
+            <state line="59" column="6" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.5704698" vertical-offset="578" max-vertical-offset="2720">
               <folding />
             </state>
           </provider>
@@ -80,7 +80,7 @@
       <file leaf-file-name="poetic_bits.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/poetic_bits.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1020">
+            <state line="12" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="986">
               <folding />
             </state>
           </provider>
@@ -107,7 +107,7 @@
       <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetic/templates/poetic/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1479">
+            <state line="22" column="0" selection-start="762" selection-end="762" vertical-scroll-proportion="-0.0" vertical-offset="374" max-vertical-offset="1479">
               <folding />
             </state>
           </provider>
@@ -143,21 +143,21 @@
         <option value="$PROJECT_DIR$/poetic/static/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/poetic/static/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/poetic/models.py" />
-        <option value="$PROJECT_DIR$/poetic/static/js/poetic-ajax.js" />
         <option value="$PROJECT_DIR$/poetic/static/css/poetic.css" />
         <option value="$PROJECT_DIR$/poetic/forms.py" />
         <option value="$PROJECT_DIR$/poetic/templates/poetic/base.html" />
         <option value="$PROJECT_DIR$/poetic/urls.py" />
+        <option value="$PROJECT_DIR$/poetic/static/js/poetic-ajax.js" />
         <option value="$PROJECT_DIR$/poetic/views.py" />
         <option value="$PROJECT_DIR$/poetic/templates/poetic/poem.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1456" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -446,14 +446,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1456" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24011713" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22777778" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -727,13 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetic/poetic_bits.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poetic/static/css/poetic.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="134" column="13" selection-start="2073" selection-end="2073" vertical-scroll-proportion="0.0" vertical-offset="1424" max-vertical-offset="2397">
@@ -757,7 +750,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/poetic/static/js/poetic-ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="1" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="238">
+        <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="-0.68" vertical-offset="0" max-vertical-offset="119">
           <folding />
         </state>
       </provider>
@@ -769,6 +762,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/poetic/poetic_bits.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="298" column="9" selection-start="11141" selection-end="11141" vertical-scroll-proportion="0.0" vertical-offset="4142" max-vertical-offset="4913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/poetic/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="112" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
@@ -776,16 +783,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetic/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="41" selection-start="9896" selection-end="9896" vertical-scroll-proportion="0.0" vertical-offset="4046" max-vertical-offset="4828">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poetic/templates/poetic/poem.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="4" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.615942" vertical-offset="527" max-vertical-offset="2601">
+        <state line="59" column="6" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.5704698" vertical-offset="578" max-vertical-offset="2720">
           <folding />
         </state>
       </provider>
