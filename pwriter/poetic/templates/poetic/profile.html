@@ -4,8 +4,13 @@
 
 
 {% block body_block %}
+
+
 <h4 class="poetic"> Poems by {{ user.username }}</h4>
 
+
+
+        {% if poems %}
         {% for poem in poems %}
 
 <div>
@@ -18,5 +23,10 @@
 </div>
 
         {% endfor %}
+        {% else %}
+        {{ user.username }} hasn't written any poems yet
+
+        {% endif %}
+
 
 {% endblock %}

@@ -55,17 +55,17 @@ $('#line{{forloop.counter }}').html(data);
     {% endfor %}
 
     $.get('/poetic/' + author + '/' + title + '/save_edits/', { 'content' : content }, function(data){
-    window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';
+    window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title_slug %}';
     }
     );
 
      }
-
+poem.title
 
 
 </script>
 
-<!--  window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';   -->
+
 </div>
 
 
@@ -79,7 +79,7 @@ $('#line{{forloop.counter }}').html(data);
     <br>
     <script>
     function cancel_edit_changes(){
-        window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title %}';
+        window.location.pathname='{% url 'retrieve_poem' username=poem.author title_slug=poem.title_slug %}';
         }
 </script>
 
@@ -127,7 +127,7 @@ $('#line{{forloop.counter }}').html(data);
 <br>
     <script>
         function delete_poem(){
-        window.location.pathname='{% url 'delete_poem' username=poem.author title_slug=poem.title %}'
+        window.location.pathname='{% url 'delete_poem' username=poem.author title_slug=poem.title_slug %}'
 
         }
 

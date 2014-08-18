@@ -110,7 +110,11 @@ def index(request):
 
                 print "poem title changed to: %s" % poem.title
 
-            poem.title_slug = slugify(poem.title)
+
+
+            temp_title = slugify(poem.title)
+            poem.title_slug = temp_title.replace("-", "_")
+
 
             poem.author = UserProfile.objects.get(user=request.user)
             print poem.title
@@ -186,6 +190,7 @@ def register(request):
 def user_profile(request, username):
     context = RequestContext(request)
     poems = Poem.objects.filter(author__user__username=username).order_by('title')
+    profile = UserProfile.objects.get(user__username=username)
     context_dict = { "poems" : poems }
     return render_to_response('poetic/profile.html', context_dict, context)
 
@@ -260,22 +265,20 @@ def save_edits(request, username, title_slug):
     author = UserProfile.objects.get(user__username=request.user.username)
     this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
     lines_to_save = Line.objects.filter(poem_part=this_poem.pk)
-    print "all old lines", lines_to_save
+    #print "all old lines", lines_to_save
     new_lines_string = request.GET['content']
-    print 'new line string: ' , new_lines_string
+    #print 'new line string: ' , new_lines_string
     new_lines_array = new_lines_string.split("^^")
-    print "New line Array: ", new_lines_array
+    #print "New line Array: ", new_lines_array
     for i, line in enumerate(lines_to_save):
         x = line.line_number
-        print line.line_number
-        print new_lines_array[i]
+        #print line.line_number
+        #print new_lines_array[i]
         line_to_save = Line.objects.get(poem_part=this_poem.pk, line_number=i)
         line_to_save.poem_line = new_lines_array[i]
         line_to_save.save()
-    this_poem = get_object_or_404(Poem, author=author, title_slug=title_slug)
-    context_dict = { 'poem' : this_poem }
-    data = "/poetic/" + username +"/" + title_slug + "/"
-    return HttpResponse(data)
+    response = "poem saved to the database!"
+    return HttpResponse(response)
 
 
 
