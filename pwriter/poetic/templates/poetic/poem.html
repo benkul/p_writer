@@ -15,9 +15,7 @@
        <span id="line{{ forloop.counter }}">{{ line }}</span><br>
 
 
-<!-- TODO: 1) have individual lines open/close for editing when click edit line button
-    TODO: 2) cause the save button below to submit all changes to DB and refresh page
--->
+
 <script>
 
 
@@ -35,6 +33,10 @@ $('#line{{forloop.counter }}').html(data);
 
 
 {% endfor %}
+
+{% if user.pk == poem.author.user.pk %}
+
+
 <script>
     var save_changes = function(){
     var author;
@@ -60,7 +62,7 @@ $('#line{{forloop.counter }}').html(data);
     );
 
      }
-poem.title
+
 
 
 </script>
@@ -143,13 +145,32 @@ poem.title
         window.location.pathname='{% url 'index' %}'
 
         }
-
-
-
     </script>
 
+    {% elif user.is_authenticated and user.pk != poem.author.user.pk %}
 
+      <div class="alert alert-danger"> You can only edit poems you have generated</div>
+
+<div>
+  <button class="btn btn-warning" onclick="create_new_poem()"> create your own poem</button>
 
 </div>
+    <script>
+        function create_new_poem(){
+        window.location.pathname='{% url 'index' %}'
 
+        }
+    </script>
+{% else %}
+<div>
+
+
+<div class="alert alert-danger"> <a href="/register/">Register</a> to create and edit your own poems</div>
+
+<div>
+
+</div>
+</div>
+{% endif %}
+</div>
 {% endblock %}

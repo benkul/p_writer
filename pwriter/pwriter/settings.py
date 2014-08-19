@@ -25,11 +25,11 @@ STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 SECRET_KEY = '77#44dopqz*g@#1+d27kq7r0&(bg*ed85$62j60u*n1j@8=8)%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poetic.pythonanywhere.com']
 
 
 # Application definition

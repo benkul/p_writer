@@ -36,7 +36,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         line = poem_gen.generate_markov_text(words_in_line)
         line_list.append( [n, words_in_line, line] )
         n += 1
-    #print line_list
+    print line_list
     #generate all poem lines
     line_string = ""
     # convert to string for translation
@@ -44,7 +44,7 @@ def create_poem(title, author, lines, min_word, max_word, source, pk):
         line_string += str(item[2] + " ")
 
     line_string = TextBlob(line_string)
-    line_string = line_string.translate(to='ga')
+    line_string = line_string.translate(to='it')
     line_string = line_string.translate(to='fr')
     line_string = line_string.translate(to='ja')
     line_string = line_string.translate(to='en')
